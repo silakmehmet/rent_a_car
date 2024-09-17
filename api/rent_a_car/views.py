@@ -1,3 +1,14 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
 
-# Create your views here.
+from .models import Car, Reservation
+from .serializers import CarSerializer, ReservationSerializer
+
+
+class CarMVS(ModelViewSet):
+    queryset = Car.objects.all()
+    serializer_class = CarSerializer
+
+
+class ReservationMVS(ModelViewSet):
+    queryset = Reservation.objects.all()
+    serializer_class = ReservationSerializer
