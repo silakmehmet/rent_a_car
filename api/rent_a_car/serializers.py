@@ -36,3 +36,13 @@ class ReservationSerializer(serializers.ModelSerializer):
     def get_total_price(self, obj):
         reserved_days = (obj.end_date - obj.start_date).days+1
         return reserved_days * obj.car.rent_per_day
+
+    def get_fields(self):
+        fields = super().get_fields()
+        request = self.context.get('request', None)
+
+        # Conditionally making customer_id read-only for non-admin users
+        if request and not request.user.is_staff:
+            fields['customer_id'].read_only = True
+
+        return fields
