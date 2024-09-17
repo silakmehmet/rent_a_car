@@ -9,6 +9,16 @@ class CarSerializer(serializers.ModelSerializer):
         fields = "__all__"
         read_only_fields = ["id", "created_date", "updated_date"]
 
+    def get_fields(self):
+        fields = super().get_fields()
+        request = self.context.get('request')
+
+        # Excluding availability field for non-admin users
+        if request and not request.user.is_staff:
+            fields.pop('availability', None)
+
+        return fields
+
 
 class ReservationSerializer(serializers.ModelSerializer):
     total_price = serializers.SerializerMethodField()
