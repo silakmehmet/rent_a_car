@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     # My Apps
     'users',
+    'rent_a_car',
 ]
 
 MIDDLEWARE = [
