@@ -3,6 +3,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.exceptions import ValidationError
 
 from .models import Car, Reservation
 from .serializers import CarSerializer, ReservationSerializer
@@ -75,9 +76,26 @@ class ReservationMVS(ModelViewSet):
         return Reservation.objects.filter(customer=user)
 
     def perform_create(self, serializer):
+        user = self.request.user
         # Automatically setting the customer field for non-admin authenticated users
-        if not self.request.user.is_staff:
-            serializer.save(customer=self.request.user)
+        if not user.is_staff:
+            # Checking for existing reservations for the current user
+            start_date = self.request.data.get("start_date")
+            end_date = self.request.data.get("end_date")
+
+            if start_date and end_date:
+                existing_reservations = Reservation.objects.filter(
+                    customer=user,
+                    start_date__lt=end_date,
+                    end_date__gt=start_date
+                )
+
+                if existing_reservations.exists():
+                    raise ValidationError(
+                        {"detail": "You cannot make more than one reservation for the same period!"})
+
+            serializer.save(customer=user)
+
         else:
-            # Allowing admin users to assign any customer
+            # Allowing admins to assign any customer
             serializer.save()
