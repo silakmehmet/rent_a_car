@@ -1,3 +1,4 @@
+import CarMainPage from "./components/Cars/CarMainPage";
 import CustomNavbar from "./components/Navbar/Navbar";
 import Login from "./components/Registration/Login";
 import Signup from "./components/Registration/Signup";
@@ -12,6 +13,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/cars"
+          element={<CarMainPage infoText={"information"} />}
+        />
       </Routes>
     </>
   );
