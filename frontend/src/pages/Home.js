@@ -13,7 +13,7 @@ const Home = () => {
         <CarSearchForm />
       </div>
       <div class="position-fixed bottom-0 mb-1 d-flex flex-column align-items-center">
-        <h1 className="text-secondary">About Us</h1>
+        <h1 className="text-dark">About Us</h1>
         <p className="w-75">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
           pariatur praesentium molestias labore sapiente nobis quidem eveniet,

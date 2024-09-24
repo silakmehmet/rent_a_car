@@ -37,7 +37,10 @@ function CustomNavbar() {
             ) : (
               <>
                 <Nav.Link as={Link} to="/login" onClick={handleLogout}>
-                  Login/Signup
+                  Login
+                </Nav.Link>
+                <Nav.Link as={Link} to="/login" onClick={handleLogout}>
+                  Signup
                 </Nav.Link>
               </>
             )}
