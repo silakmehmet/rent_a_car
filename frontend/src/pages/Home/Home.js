@@ -1,7 +1,7 @@
 import React from "react";
 
-import ImageSlider from "../components/ImageSlider/ImageSlider";
-import CarSearchForm from "../components/CarSearchForm/CarSearchForm";
+import ImageSlider from "../../components/ImageSlider/ImageSlider";
+import CarSearchForm from "../../components/CarSearchForm/CarSearchForm";
 
 import "./Home.css";
 

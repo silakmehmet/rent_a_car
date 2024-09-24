@@ -19,27 +19,27 @@ function CustomNavbar() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link as={Link} to="/">
+            <Nav.Link eventKey="i" as={Link} to="/">
               Home
             </Nav.Link>
-            <Nav.Link as={Link} to="/cars">
+            <Nav.Link eventKey="i" as={Link} to="/cars">
               Cars
             </Nav.Link>
             {isLoggedIn ? (
               <>
-                <Nav.Link as={Link} to="/rents">
+                <Nav.Link eventKey="i" as={Link} to="/rents">
                   Rents
                 </Nav.Link>
-                <Nav.Link as={Link} to="/" onClick={handleLogout}>
+                <Nav.Link eventKey="i" as={Link} to="/" onClick={handleLogout}>
                   Logout
                 </Nav.Link>
               </>
             ) : (
               <>
-                <Nav.Link as={Link} to="/login" onClick={handleLogout}>
+                <Nav.Link eventKey="i" as={Link} to="/login">
                   Login
                 </Nav.Link>
-                <Nav.Link as={Link} to="/login" onClick={handleLogout}>
+                <Nav.Link eventKey="i" as={Link} to="/signup">
                   Signup
                 </Nav.Link>
               </>
