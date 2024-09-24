@@ -1,11 +1,10 @@
 import CustomNavbar from "./components/Navbar/Navbar";
-import ImageSlider from "./components/ImageSlider/ImageSlider";
-
+import Home from "./pages/Home";
 function App() {
   return (
     <>
       <CustomNavbar />
-      <ImageSlider />
+      <Home />
     </>
   );
 }

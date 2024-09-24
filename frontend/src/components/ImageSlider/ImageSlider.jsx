@@ -2,9 +2,9 @@ import React from "react";
 import { Carousel } from "react-bootstrap";
 import { cars } from "../../utils/cars";
 
-function ImageSlider() {
+const ImageSlider = () => {
   return (
-    <Carousel interval={3000} pause="hover">
+    <Carousel interval={5000} pause="hover" indicators={false}>
       {cars.map((image, index) => (
         <Carousel.Item key={index}>
           <img
@@ -17,6 +17,6 @@ function ImageSlider() {
       ))}
     </Carousel>
   );
-}
+};
 
 export default ImageSlider;
