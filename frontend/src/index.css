@@ -9,6 +9,10 @@ body {
   background-image: url("https://plus.unsplash.com/premium_photo-1672944876342-4090164e1c04?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fGJhY2tncm91bmQlMjB0ZXh0dXJlfGVufDB8fDB8fHww");
   background-size: cover;
   background-position: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 code {
