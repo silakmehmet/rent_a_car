@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import CarMainPage from "../../components/Cars/CarMainPage";
 import CarDetail from "../../components/Cars/CarDetail";
+import CarReservation from "../../components/Cars/CarReservation";
+import { Container } from "react-bootstrap";
+import { scroller } from "react-scroll";
 
 const CarDetailsPage = () => {
+  const [showForm, setShowForm] = useState(false);
+
+  const handleRentClick = () => {
+    setShowForm(true);
+    // smoothly scrolling to reservation section
+    setTimeout(() => {
+      scroller.scrollTo("reservationSection", {
+        duration: 1000,
+        delay: 0,
+        smooth: "easeInOutExpo",
+      });
+    }, 50);
+  };
+
   const car = {
     brand: "Dacia Sandero",
     rentPerDay: "8000.00",
@@ -19,10 +36,15 @@ const CarDetailsPage = () => {
   };
 
   return (
-    <div>
+    <Container fluid className="m-0 p-0 d-flex flex-column">
       <CarMainPage infoText={car.brand} />
-      <CarDetail car={car} />
-    </div>
+      <CarDetail car={car} onRentClick={handleRentClick} showForm={showForm} />
+      {showForm && (
+        <div id="reservationSection">
+          <CarReservation car={car} />
+        </div>
+      )}
+    </Container>
   );
 };
 

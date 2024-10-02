@@ -3,7 +3,7 @@ import { carInterior } from "../../utils/cars";
 
 const CarMainPage = ({ infoText }) => {
   return (
-    <div className="position-relative overflow-hidden">
+    <div className="position-relative">
       <img
         className="d-block w-100"
         src={carInterior}

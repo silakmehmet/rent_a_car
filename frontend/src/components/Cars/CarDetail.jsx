@@ -3,7 +3,7 @@ import { Card, Button, Row, Col } from "react-bootstrap";
 import { iconList } from "../../utils/icons";
 import { FaCircleXmark, FaCircleCheck } from "react-icons/fa6";
 
-const CarDetail = ({ car }) => {
+const CarDetail = ({ car, onRentClick, showForm }) => {
   // Creating an array of key-value pairs from the car object, filtering out "brand", "rentPerDay", and "image"
   const details = Object.entries(car).filter(
     ([key]) => key !== "brand" && key !== "rentPerDay" && key !== "image"
@@ -14,13 +14,13 @@ const CarDetail = ({ car }) => {
     key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, " $1");
 
   return (
-    <Card className="p-2 rounded-0">
+    <Card className="p-2 rounded-0 m-0 border-0">
       <Row>
         <Col xs={12} md={6}>
           <Card.Img
             src={car.image}
             alt="Car Image"
-            style={{ height: "310px", width: "100%", objectFit: "cover" }}
+            style={{ height: "330px", width: "100%", objectFit: "cover" }}
           />
         </Col>
         <Col xs={12} md={6}>
@@ -51,14 +51,21 @@ const CarDetail = ({ car }) => {
                 </Col>
               ))}
             </Row>
-            <div className="d-flex justify-content-around">
-              <Button variant="danger" className="me-2 w-100">
-                Rent Car
-              </Button>
-              <Button variant="warning" className="w-100">
-                Cars
-              </Button>
-            </div>
+
+            {!showForm && (
+              <div className="d-flex justify-content-around">
+                <Button
+                  variant="danger"
+                  className="me-2 w-100"
+                  onClick={onRentClick}
+                >
+                  Rent Car
+                </Button>
+                <Button variant="warning" className="w-100">
+                  Cars
+                </Button>
+              </div>
+            )}
           </Card.Body>
         </Col>
       </Row>
